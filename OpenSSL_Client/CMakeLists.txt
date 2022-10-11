@@ -4,7 +4,13 @@
 cmake_minimum_required (VERSION 3.8)
 
 # Add source to this project's executable.
-add_executable (OpenSSL_Client "OpenSSL_Client.cpp" "OpenSSL_Client.h")
+add_executable (
+	OpenSSL_Client 
+	"OpenSSL_Client.cpp"
+	"OpenSSL_Client.h"
+)
+
+target_link_libraries(OpenSSL_Client ${OPENSSL_CRYPTO_LIBRARY} ${OPENSSL_SSL_LIBRARY})
 
 if (CMAKE_VERSION VERSION_GREATER 3.12)
   set_property(TARGET OpenSSL_Client PROPERTY CXX_STANDARD 20)

@@ -9,3 +9,4 @@ find_package(OpenSSL)
 
 # Include sub-projects.
 add_subdirectory ("client")
+add_subdirectory ("server")

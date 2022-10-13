@@ -60,7 +60,9 @@ int main()
 	if (bio == nullptr) {
 		my::print_errors_and_exit("Error in BIO_new_connect");
 	}
-
+	if (BIO_do_connect(bio.get()) <= 0) {
+		my::print_errors_and_exit("Error in BIO_do_connect");
+	}
 	auto ssl_bio = std::move(bio) | my::UniquePtr<BIO>(BIO_new_ssl(ctx.get(), 1)); // 1 for client
 
 	SSL_set_tlsext_host_name(my::get_ssl(ssl_bio.get()), "duckduckgo.com");

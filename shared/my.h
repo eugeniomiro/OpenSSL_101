@@ -118,6 +118,12 @@ namespace my
 		}
 		return headers + "\r\n" + body;
 	}
+
+	UniquePtr<BIO> operator | (my::UniquePtr<BIO> lower, my::UniquePtr<BIO> upper)
+	{
+		BIO_push(upper.get(), lower.release());
+		return upper;
+	}
 }
 
 #endif // !MY_H

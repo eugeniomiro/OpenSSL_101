@@ -2,12 +2,6 @@
 #include <signal.h>
 #include <stdio.h>
 
-my::UniquePtr<BIO> operator |(my::UniquePtr<BIO> lower, my::UniquePtr<BIO> upper)
-{
-    BIO_push(upper.get(), lower.release());
-    return upper;
-}
-
 my::UniquePtr<BIO> my::accept_new_tcp_connection(BIO* accept_bio)
 {
     if (BIO_do_accept(accept_bio) <= 0) {

@@ -5,5 +5,8 @@ cmake_minimum_required (VERSION 3.8)
 
 project ("OpenSSL_101")
 
+find_package(OpenSSL)
+
 # Include sub-projects.
-add_subdirectory ("OpenSSL_Client")
+add_subdirectory ("client")
+add_subdirectory ("server")
